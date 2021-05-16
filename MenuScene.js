@@ -14,7 +14,7 @@ class MenuScene extends Phaser.Scene{
     }
     create() {
         //this.fullback();
-        this.background = this.add.image(0,0,'Menu').setScale(2);
+        //this.background = this.add.image(0,0,'Menu').setScale(2);
         this.background2 = this.add.image(0, 0 , "astro2");
         this.background2.setOrigin(0.5,0.005);
         this.background2.setScale(0.35);

@@ -1,7 +1,5 @@
-"use strict";
-/*var Gra = Gra || {};
-Gra.launcher = function (game){};
-*/
+
+
 
 class Scene1 extends Phaser.Scene {
     constructor() {
@@ -44,7 +42,7 @@ class Scene1 extends Phaser.Scene {
       });
       // Prevents video freeze when game is out of focus (i.e. user changes tab on the browser)
       vid.setPaused(false);
-      //this.scene.start("Spaceships");
+      
       this.input.keyboard.once('keydown_SPACE', this.start, this);
       this.input.once('pointerdown', this.start, this);
     }
