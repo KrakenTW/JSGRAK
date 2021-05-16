@@ -8,9 +8,12 @@ class Scene1 extends Phaser.Scene {
       super("bootGame");
     }
   
-    preload(){ 
-      
-      this.load.video("liquid", "/assets/skull.mp4");
+    preload(){
+      this.load.image('Menu', '/assets/menu.png');
+      this.load.image('ground','/assets/platform.png');
+      this.load.video('wormhole', '/assets/Intro3.mp4','loadeddata',false,true);
+      this.load.image('Sun','/assets/Sun.png')
+      this.load.image('player','/assets/player.png');
       this.load.image("background", "/assets/back.webp");
       this.load.image("backgroundstart", "/assets/green.jpg");
       this.load.image("astro1","/assets/—Pngtree—futuristic user interface illustration_5439293.png");
@@ -31,7 +34,16 @@ class Scene1 extends Phaser.Scene {
       this.backgroundstart = this.add.image(0, 0, "backgroundstart"); 
       this.backgroundstart.setOrigin(0, 0);
       this.backgroundstart.setScale(1);
-      
+
+      var vid = this.add.video(config.width /2, 470, 'wormhole').setScale(1.5);
+
+      vid.play(true);
+      this.add.text(config.width/2 - 150, 820, "Press 'Space' to skip", {
+        font: "25px Verdana",
+        fill: "white"
+      });
+      // Prevents video freeze when game is out of focus (i.e. user changes tab on the browser)
+      vid.setPaused(false);
       //this.scene.start("Spaceships");
       this.input.keyboard.once('keydown_SPACE', this.start, this);
       this.input.once('pointerdown', this.start, this);

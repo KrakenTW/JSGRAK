@@ -1,6 +1,6 @@
 var cursors;
 var player;
-var platforms
+var platforms;
 class Scene2 extends Phaser.Scene {
     constructor() {
       super("Spaceships");
@@ -51,13 +51,10 @@ class Scene2 extends Phaser.Scene {
       
       if (cursors.left.isDown){
             player.setVelocityX(-300);
-            
-            
         }
         else if (cursors.right.isDown){
             player.setVelocityX(300);
         }
-
         if (cursors.up.isDown) {
             player.setVelocityY(-300);
         }
