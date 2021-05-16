@@ -22,7 +22,7 @@ class Scene2 extends Phaser.Scene {
         this.spawnSprites();
       } */
 
-      this.cursors = this.input.keyboard.createCursorKeys();
+      cursors = this.input.keyboard.createCursorKeys();
       platforms.create(config.width / 2, config.height + 30, 'ground').setScale(5).refreshBody();
       player = this.physics.add.image(config.width / 2, config.height / 2, 'player').setScale(0.8);
       player.setCollideWorldBounds(true);
@@ -42,7 +42,7 @@ class Scene2 extends Phaser.Scene {
     moveShip(ship,speed){
         ship.y += speed;
     }*/
-   /*
+   
     update(){
       //this.moveShip(this.ship1, 0.1);
       player.setVelocity(0);
@@ -60,5 +60,5 @@ class Scene2 extends Phaser.Scene {
             player.setVelocityY(300);
         }
     }
-    */
+    
   }
