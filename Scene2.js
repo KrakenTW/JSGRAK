@@ -1,13 +1,15 @@
 var cursors;
 var player;
 var platforms;
+
 class Scene2 extends Phaser.Scene {
     constructor() {
       super("Spaceships");
     }
 
     create() {
-      platforms = this.physics.add.staticGroup();
+      //platforms = this.physics.add.staticGroup();
+      
       this.background = this.add.image(0, 0, "background");
       this.background.setOrigin(0, 0);
       this.background.setScale(1);
@@ -21,7 +23,7 @@ class Scene2 extends Phaser.Scene {
       } 
 
       cursors = this.input.keyboard.createCursorKeys();
-      platforms.create(config.width / 2, config.height +30, 'ground').setScale(5).refreshBody();
+      //platforms.create(config.width / 2, config.height +30, 'ground').setScale(5).refreshBody();
       player = this.physics.add.image(config.width / 2, config.height / 2, 'player').setScale(0.8);
       player.setCollideWorldBounds(true);
       
