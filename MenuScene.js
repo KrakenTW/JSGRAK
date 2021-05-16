@@ -14,11 +14,14 @@ class MenuScene extends Phaser.Scene{
     }
     create() {
         //this.fullback();
+        //this.background = this.add.image(0,0,'Menu').setScale(2);
         this.background2 = this.add.image(0, 0 , "astro2");
         this.background2.setOrigin(0.5,0.005);
         this.background2.setScale(0.35);
         //this.background2.flipY = false;
         //this.background2.angle = 1;
+        this.background3 = this.add.image(1600, 433 , "astro2");
+        this.background3.setScale(0.35);
         
     
         this.add.text(config.width/2 - 280, 20, "Prace wykonali", {
@@ -48,7 +51,6 @@ class MenuScene extends Phaser.Scene{
     }
 
     start(){
-        
         this.scene.start("Spaceships");
     }
 
