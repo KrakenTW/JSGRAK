@@ -48,6 +48,7 @@ class MenuScene extends Phaser.Scene{
     }
 
     start(){
+        
         this.scene.start("Spaceships");
     }
 

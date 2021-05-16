@@ -8,7 +8,7 @@ class Scene1 extends Phaser.Scene {
       super("bootGame");
     }
   
-    preload(){
+    preload(){ 
       
       this.load.video("liquid", "/assets/skull.mp4");
       this.load.image("background", "/assets/back.webp");
