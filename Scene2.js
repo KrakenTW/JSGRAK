@@ -1,6 +1,9 @@
 var cursors;
 var player;
 var platforms;
+var HP;
+var shield;
+var lives;
 
 class Scene2 extends Phaser.Scene {
     constructor() {
@@ -17,10 +20,11 @@ class Scene2 extends Phaser.Scene {
       this.add.text(config.width/2 - 70, 20, "Storm - Facer", {
         font: "35px Brush Script MT",
         fill: "yellow"
-      });/*
+      });
+
       for (i = 0; i < 25; i++) {
-        this.spawnSprites();
-      } */
+        this.spawnSprites(i);
+      } 
 
       cursors = this.input.keyboard.createCursorKeys();
       platforms.create(config.width / 2, config.height + 30, 'ground').setScale(5).refreshBody();
@@ -33,15 +37,16 @@ class Scene2 extends Phaser.Scene {
       this.ship1.flipY = true;
       
     }
-    /*
-    spawnSprites(){
+
+    
+    spawnSprites(i){
       
-      this.add.sprite(Math.floor(Math.random() * 1000),Math.floor(Math.random() * 800) ,'beball');  
+     alien[i] =  this.add.sprite(Math.floor(Math.random() * 1000),Math.floor(Math.random() * 800) ,'beball');  
     }
 
-    moveShip(ship,speed){
-        ship.y += speed;
-    }*/
+    //moveShip(ship,speed){
+    //    ship.y += speed;
+    //}
    
     update(){
       //this.moveShip(this.ship1, 0.1);
