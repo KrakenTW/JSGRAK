@@ -10,11 +10,11 @@ class Scene1 extends Phaser.Scene {
       this.load.image('Menu', '/assets/menu.png');
       this.load.image('ground','/assets/platform.png');
       this.load.video('wormhole', '/assets/Intro3.mp4','loadeddata',false,true);
-      this.load.image('Sun','/assets/Sun.png')
+      //this.load.image('Sun','/assets/Sun.png')
       this.load.image('player','/assets/playership.png');
       this.load.image("background", "/assets/back.webp");
       this.load.image("backgroundstart", "/assets/green.jpg");
-      this.load.image("astro1","/assets/—Pngtree—futuristic user interface illustration_5439293.png");
+      //this.load.image("astro1","/assets/—Pngtree—futuristic user interface illustration_5439293.png");
       this.load.image("astro2","/assets/astro1.png");
       this.load.image("colors","/assets/images/colors.png");
       //this.load.image("back","/assets/image");
