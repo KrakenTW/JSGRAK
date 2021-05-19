@@ -13,6 +13,17 @@ class MenuScene extends Phaser.Scene{
         this.background3.angle = 0;
     }
     create() {
+        this.music = this.sound.add('background_music');
+        var musicConfig = {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            detune: 0,
+            seek: 0,
+            loop: true,
+            delay: 0
+        }
+        this.music.play(musicConfig);
         //this.fullback();
         //this.background = this.add.image(0,0,'Menu').setScale(2);
         this.background2 = this.add.image(0, 0 , "astro2");

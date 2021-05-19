@@ -22,19 +22,20 @@ class Scene1 extends Phaser.Scene {
       //this.load.image("ship3","/assets/images/");
       //this.load.image("ship2","/assets/images/");
       this.load.image("ship", "/assets/images/ship.png");
-      
       this.load.image('beball', '/assets/images/ship.png');
       this.load.image('atari', '/assets/images/ship.png');
       this.load.image('bikkuriman', '/assets/images/ship.png');
+
+      this.load.audio('background_music','/sounds/John Williams - Star Wars Main Theme (Full).mp3');
     }
 
     create() {
       this.backgroundstart = this.add.image(0, 0, "backgroundstart"); 
       this.backgroundstart.setOrigin(0, 0);
       this.backgroundstart.setScale(1);
-
+      
       var vid = this.add.video(config.width /2, 470, 'wormhole').setScale(1.5);
-
+      
       vid.play(true);
       this.add.text(config.width/2 - 150, 820, "Press 'Space' to skip", {
         font: "25px Verdana",
