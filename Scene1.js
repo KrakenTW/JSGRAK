@@ -1,5 +1,5 @@
 
-
+let skipButton;
 
 class Scene1 extends Phaser.Scene {
     constructor() {
@@ -7,12 +7,15 @@ class Scene1 extends Phaser.Scene {
     }
   
     preload(){
+      this.load.image('star', '/assets/star.png');
       this.load.image('Menu', '/assets/menu.png');
       this.load.image('ground','/assets/platform.png');
       this.load.video('wormhole', '/assets/Intro3.mp4','loadeddata',false,true);
       //this.load.image('Sun','/assets/Sun.png')
       this.load.image('player','/assets/playership.png');
       this.load.image("background", "/assets/back.webp");
+      this.load.image('background2', '/assets/mapa2.jpg');
+      this.load.image('background3', '/assets/mapa3.jpg');
       this.load.image("backgroundstart", "/assets/green.jpg");
       //this.load.image("astro1","/assets/—Pngtree—futuristic user interface illustration_5439293.png");
       this.load.image("astro2","/assets/astro1.png");
@@ -30,6 +33,7 @@ class Scene1 extends Phaser.Scene {
     }
 
     create() {
+      skipButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
       this.backgroundstart = this.add.image(0, 0, "backgroundstart"); 
       this.backgroundstart.setOrigin(0, 0);
       this.backgroundstart.setScale(1);
@@ -46,6 +50,11 @@ class Scene1 extends Phaser.Scene {
       
       this.input.keyboard.once('keydown_SPACE', this.start, this);
       this.input.once('pointerdown', this.start, this);
+    }
+    update(){
+      if(skipButton.isDown){
+        this.start();
+      }
     }
     start(){
       this.scene.start("Start-Menu");

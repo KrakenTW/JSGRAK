@@ -1,40 +1,13 @@
-var cursors;
-var player;
-let platforms;
-var shield;
-var lives;
-//let weapon;
-let keyA;
-let keyS;
-let keyD;
-let keyW;
-let keyV;
-let fireButton;
-var image0;
-var image1;
-var tween;
-var iter = 0;
-var score = 0;
-var scoreText;
-var lasers;
-var laser;
 
-class Scene2 extends Phaser.Scene {
+
+class Scene3 extends Phaser.Scene {
     constructor() {
-      super("Spaceships");
+      super("Map-Second");
     }
 
     create() {
-      lasers = this.add.group();
-      lasers.enableBody = true;
-      lasers.physicsBodyType = Phaser.Physics.ARCADE;
-      lasers.createMultiple(20,'laser');
-      //lasers.callAll('events.onOutOfBounds.add', 'events.onOutOfBounds', resetLaser);
-      //lasers.callAll('anchor.setTo', 'anchor', 0.5, 1.0);
-      //lasers.setAll('checkWorldBounds', true);
-
       image0 = this.add.tileSprite(config.width /2, config.height /2 ,1884,900, 'background');
-      image1 = this.add.tileSprite(config.width /2, config.height /2 ,1884,900, 'background2');
+      image1 = this.add.tileSprite(config.width /2, config.height /2 ,1884,900, 'background3');
 
       tween = this.tweens.addCounter({
         from: 1,
@@ -42,11 +15,9 @@ class Scene2 extends Phaser.Scene {
         duration: 5000,
         ease: 'Sine.easeInOut',
         yoyo: false,
-        visible: false,
+        visible: true,
         repeat: -1
       });
-
-      //Deklaracja przycisków
       keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
       keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
       keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
@@ -54,23 +25,24 @@ class Scene2 extends Phaser.Scene {
       keyV = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.V);
       fireButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-
-
       platforms = this.physics.add.staticGroup();
+      
       this.add.text(config.width/2 - 70, 20, "Storm - Facer", {
         font: "35px Brush Script MT",
         fill: "yellow"
       });
 
+      /*for (i = 0; i < 25; i++) {
+        this.spawnSprites(i);
+      } */
 
       cursors = this.input.keyboard.createCursorKeys();
       platforms.create(config.width / 2, config.height + 30, 'ground').setScale(5).refreshBody();
       //platforms.body.allowGravity = false;
       //platforms.body.immovable = true;
       //platforms.body.velocity.x = 100;
-      player = this.physics.add.sprite(0, config.height / 2, 'player').setScale(0.2);
-      player.angle = +90;
-      //player.anchor.setTo(0.5, 0.5);
+      player = this.physics.add.image(0, config.height / 2, 'player').setScale(0.2);
+      player.angle = 90;
       player.setCollideWorldBounds(true);
       this.physics.add.group({
         key: 'star',
@@ -80,29 +52,45 @@ class Scene2 extends Phaser.Scene {
         allowGravity: true
       });
       
-      scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+
+
+      this.ship1 = this.add.image(50, 50, "ship");
+      this.ship1.setScale(6);
+      this.ship1.setOrigin(0);
+      this.ship1.flipY = true;
       //weapon.trackSprite(player, 0, 0, true);
     }
-    resetLaser(laser) {
-      // Destroy the laser
-      laser.kill();
-    }
+
+    /*
+    spawnSprites(i){
+      
+     alien[i] =  this.add.sprite(Math.floor(Math.random() * 1000),Math.floor(Math.random() * 800) ,'beball');  
+    }*/
+
+    //moveShip(ship,speed){
+    //    ship.y += speed;
+    //}
    
     update(){
-      image1.tilePositionX = iter * 200;//automatyczne przesuwanie mapy w lewo
-      iter += 0.01;//predkosc przesuwania
+      //this.moveShip(this.ship1, 0.1);
+
+      image1.tilePositionX = iter * 200;
+      //image1.tilePositionY = Math.sin(-iter) * 400;
+
+      iter += 0.01;
       player.setVelocity(0);
       if(keyV.isDown){
         this.start();
       }
-      if (fireButton.isDown){
-          touchDown();
-        
+      if (fireButton.isDown)
+      {
+          player.setVelocityX(-300);
+          player.angle = -45;
       }
 
       if (cursors.left.isDown || keyA.isDown){
             player.setVelocityX(-300);
-            player.angle = +90;
+            player.angle = 90;
         }
         else if (cursors.right.isDown || keyD.isDown){
             player.setVelocityX(300);
@@ -117,18 +105,8 @@ class Scene2 extends Phaser.Scene {
             player.angle = +135;
         }
     }
-    touchDown() {
-      fireLaser();
-    }
-
-    fireLaser() {
-       laser = lasers.getFirstExists(false);
-      if (laser) {
-        laser.body.velocity.y = -500;
-      }
-    }
     start(){
-        this.scene.start("Map-Second");
+        this.scene.start("Map-Boss");
     }
     
   }
