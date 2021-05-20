@@ -5,12 +5,14 @@ var config = {
     backgroundColor: 0x000000,
     physics: {
       default: 'arcade',
-      arcade: {
-          gravity: { y: 300 },
-          debug: false
+      arcade: { 
+        debug: false
+        ,
+        fps: 300, 
+        gravity: { x: -8500 } 
       }
   },
-    scene: [ Scene1, MenuScene, Scene2],
+    scene: [ Scene1, MenuScene, Scene2, Scene3,SceneBoss],
     pixelArt: true ,
     audio: {
         disableWebAudio: true
