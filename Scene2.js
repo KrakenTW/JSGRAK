@@ -1,8 +1,8 @@
 var cursors;
 var player;
 let platforms;
-var shield;
-var lives;
+let powerBar;
+let healthBar;
 //let weapon;
 let keyA;
 let keyS;
@@ -25,6 +25,8 @@ class Scene2 extends Phaser.Scene {
     }
 
     create() {
+      
+      //tworzenie grupy laserów na razie niewidocznych
       lasers = this.add.group();
       lasers.enableBody = true;
       lasers.physicsBodyType = Phaser.Physics.ARCADE;
@@ -64,12 +66,20 @@ class Scene2 extends Phaser.Scene {
 
 
       cursors = this.input.keyboard.createCursorKeys();
-      platforms.create(config.width / 2, config.height + 30, 'ground').setScale(5).refreshBody();
+      platforms.create(config.width / 2, config.height + 30, 'ground').setScale(1.4).refreshBody();
+      platforms.create(800, 400, 'ground').setScale(0.3);
+      platforms.create(175, 300, 'ground').setScale(0.3);
+      platforms.create(1750, 220, 'ground').setScale(0.3);
+      platforms.create(1400, 400, 'ground').setScale(0.3);
+      platforms.create(550, 650, 'ground').setScale(0.3);
+      platforms.create(750, 80, 'ground').setScale(0.3);
+      //platforms.forEach()
       //platforms.body.allowGravity = false;
       //platforms.body.immovable = true;
       //platforms.body.velocity.x = 100;
       player = this.physics.add.sprite(0, config.height / 2, 'player').setScale(0.2);
       player.angle = +90;
+      player.setBounce(500);
       //player.anchor.setTo(0.5, 0.5);
       player.setCollideWorldBounds(true);
       this.physics.add.group({
@@ -82,6 +92,34 @@ class Scene2 extends Phaser.Scene {
       
       scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
       //weapon.trackSprite(player, 0, 0, true);
+      //tworzenie tarczy oraz paska hp
+      this.HP = this.add.image(25,25,'HP');
+      this.SHIELD = this.add.image(25,100,'SHIELD');
+      healthBar=this.makeBar(45,10,0x2ecc71).setScale(0.5);
+      this.setValue(healthBar,100);
+      powerBar=this.makeBar(45,85,0xe74c3c).setScale(0.5);
+      this.setValue(powerBar,50);
+    }
+    makeBar(x,y,color){
+      //draw the bar
+      let bar = this.add.graphics();
+
+      //color the bar
+      bar.fillStyle(color, 1);
+
+      //fill the bar with a rectangle
+      bar.fillRect(0, 0, 200, 50);
+      
+      //position the bar
+      bar.x = x;
+      bar.y = y;
+
+      //return the bar
+      return bar;
+    }
+    setValue(bar,percentage) {
+      //scale the bar
+      bar.scaleX = percentage/100;
     }
     resetLaser(laser) {
       // Destroy the laser

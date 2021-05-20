@@ -6,9 +6,10 @@ var config = {
     physics: {
       default: 'arcade',
       arcade: { 
-        debug: false,
+        debug: false
+        ,
         fps: 300, 
-        gravity: { x: -13600 } 
+        gravity: { x: -8500 } 
       }
   },
     scene: [ Scene1, MenuScene, Scene2, Scene3,SceneBoss],

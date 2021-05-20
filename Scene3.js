@@ -37,12 +37,13 @@ class Scene3 extends Phaser.Scene {
       } */
 
       cursors = this.input.keyboard.createCursorKeys();
-      platforms.create(config.width / 2, config.height + 30, 'ground').setScale(5).refreshBody();
+      platforms.create(config.width / 2, config.height + 30, 'ground').setScale(1.4).refreshBody();
       //platforms.body.allowGravity = false;
       //platforms.body.immovable = true;
       //platforms.body.velocity.x = 100;
       player = this.physics.add.image(0, config.height / 2, 'player').setScale(0.2);
       player.angle = 90;
+      player.setBounce(300);
       player.setCollideWorldBounds(true);
       this.physics.add.group({
         key: 'star',

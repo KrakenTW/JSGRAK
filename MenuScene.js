@@ -39,27 +39,17 @@ class MenuScene extends Phaser.Scene{
         this.background3.setScale(0.35);
         
     
-        this.add.text(config.width/2 - 280, 20, "Prace wykonali", {
-            font: "75px Verdana",
-            fill: '#934300'
-        });
-        this.add.text(config.width/2 - 250, 200, "Michal Ziolkowski", {
-            font: "55px Verdana",
-            fill: "darkblue"
-        });
-        this.add.text(config.width/2 - 250, 300, "Przemyslaw Utko", {
-            font: "55px Verdana",
-            fill: "darkblue"
-        });
-        this.add.text(config.width/2 - 250, 400, "Dawid Pawlowski", {
-            font: "55px Verdana",
-            fill: "darkblue"
-        });
+        
+        this.MZ = this.add.image(config.width/2 , 100, "WK").setScale(0.6);
+        this.MZ = this.add.image(config.width/2 , 250, "MZ").setScale(0.4);
+        this.PZ = this.add.image(config.width/2 , 400, "PZ").setScale(0.4);
+        this.DZ = this.add.image(config.width/2 , 550, "DZ").setScale(0.4);
+        
 
 
-        this.add.text(config.width/2 - 300, 720, "Press 'Space' to begin", {
-            font: "55px Verdana",
-            fill: "darkblue"
+        this.add.text(config.width/2 - 200, 800, "Press 'Space' to begin", {
+            font: "35px Verdana",
+            fill: "#00afe7"
         });
         skipButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.input.keyboard.once('keydown_SPACE', this.start, this);

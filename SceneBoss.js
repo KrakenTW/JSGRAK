@@ -7,7 +7,7 @@ class SceneBoss extends Phaser.Scene {
 
     create() {
       image0 = this.add.tileSprite(config.width /2, config.height /2 ,1884,900, 'background');
-      image1 = this.add.tileSprite(config.width /2, config.height /2 ,1884,900, 'background3');
+      image1 = this.add.tileSprite(config.width /2, config.height /2 ,1884,900, 'background2');
 
       tween = this.tweens.addCounter({
         from: 1,
@@ -37,12 +37,13 @@ class SceneBoss extends Phaser.Scene {
       } */
 
       cursors = this.input.keyboard.createCursorKeys();
-      platforms.create(config.width / 2, config.height + 30, 'ground').setScale(5).refreshBody();
+      platforms.create(config.width / 2, config.height + 30, 'ground').setScale(1.4).refreshBody();
       //platforms.body.allowGravity = false;
       //platforms.body.immovable = true;
       //platforms.body.velocity.x = 100;
       player = this.physics.add.image(0, config.height / 2, 'player').setScale(0.2);
       player.angle = 90;
+      player.setBounce(300);
       player.setCollideWorldBounds(true);
       this.physics.add.group({
         key: 'star',

@@ -7,9 +7,15 @@ class Scene1 extends Phaser.Scene {
     }
   
     preload(){
+      this.load.image('HP','/assets/HP.png');
+      this.load.image('SHIELD','/assets/HP.png');
+      this.load.image('MZ','/assets/MZ.png');
+      this.load.image('PZ','/assets/PZ.png');
+      this.load.image('DZ','/assets/DZ.png');
+      this.load.image('WK','/assets/WK.png');
       this.load.image('star', '/assets/star.png');
       this.load.image('Menu', '/assets/menu.png');
-      this.load.image('ground','/assets/platform.png');
+      this.load.image('ground','/assets/platformss.png');
       this.load.video('wormhole', '/assets/Intro3.mp4','loadeddata',false,true);
       //this.load.image('Sun','/assets/Sun.png')
       this.load.image('player','/assets/playership.png');
